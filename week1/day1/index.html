@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Angular Project$</title>
+</head>
+<body ng-init="name='keith'">
+  <p id='myParagraph' ng-bind='name'></p>
+  <div ng-hide='true'>
+    <p>Angular is not working!!!</p>
+  </div>
+
+  {{ name }}
+
+  <div ng-if='true'>Show me</div>
+
+  <a ng-href="http://www.google.com/{{dynamicInfo}}">Angular Link</a>
+
+  <input id='myName' type="text" >
+  <script>
+    const myName = document.getElementById('myName');
+    const myParagraph = document.getElementById('myParagraph');
+    console.dir(myName);
+    myName.oninput = function(){
+      console.log('Im Here!');
+      myParagraph.innerHTML = myName.value;
+    }
+  </script>
+</body>
+</html>

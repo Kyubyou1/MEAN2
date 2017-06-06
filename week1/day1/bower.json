@@ -1,0 +1,20 @@
+{
+  "name": "day1",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "jfrazx <staringblind@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/CodingDojo-MEAN-05-17/MEAN2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}
