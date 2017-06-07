@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Controllers</title>
+  <script src="bower_components/angular/angular.js"></script>
+  <script>
+    angular.module("app", [])
+    .controller("myController", ["$scope", function($scope){
+      console.log('loading controller');
+
+      $scope.names = [
+        "Kyubee",
+        "Brian",
+        "Jason",
+        "Keith",
+        "Erin",
+        "miller"
+      ];
+
+      $scope.updateName = function(newName){
+        this.names.push(newName);
+        console.log(newName);
+      };
+    }]);
+
+
+  </script>
+</head>
+<body>
+  <div ng-hide="true">
+    <p>Problem</p>
+  </div>
+
+  <div ng-controller="myController">
+    <input type="text" ng-model="newName">
+
+
+    <button ng-click="updateName(newName)">Add Student</button>
+    <ul>
+      <li ng-repeat="name in names track by $index" ng-bind="name + ', ' + $index"></li>
+    </ul>
+  </div>
+
+  <div ng-controller="myController">
+    <input type="text" ng-model="newName" ng-change="updateName(newName)">
+
+    <p ng-bind="name"></p>
+  </div>
+
+</body>
+</html>
