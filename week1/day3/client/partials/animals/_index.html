@@ -1,0 +1,15 @@
+<table ng-controller='animalController'>
+  <thead>
+    <th>Name</th>
+    <th>Legs</th>
+    <th>Eats People</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat='animal in animals'>
+      <td><a ng-href='#!/animals/{{$index}}'>{{animal.name}}</a></td>
+      <td>{{animal.legs}}</td>
+      <td>{{animal.eatsPeople}}</td>
+    </tr>
+  </tbody>
+</table>

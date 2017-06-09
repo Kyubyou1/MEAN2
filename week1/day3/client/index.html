@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='angular/angular.js'></script>
+  <script src='angular-route/angular-route.js'></script>
+  <script>
+    angular.module('app', ['ngRoute'])
+    .controller('animalController', ['$scope', '$routeParams', '$http', '$location', function($scope, $routeParams, $http, $location) {
+      console.log($routeParams);
+      //$scope.animal = $scope.animals[$routeParams.id];
+      $scope.getAnimals = function(){
+        $http.get('/animals')
+        .then(function(res){
+          console.log(res);
+          $scope.animals = res.data;
+        })
+        .catch(function(errorRes){
+          console.log(errorRes);
+        })
+      }
+      $scope.getAnimals();
+      $scope.getAnimal = function(){
+        $http.get('/animals/' + $routeParams.id)
+        .then(res => {
+          console.log(res.data);
+          this.animal = res.data;
+        })
+        .catch(console.log);
+      }
+      $scope.createAnimal = function(animal){
+        $http.post('/animals', animal)
+        .then(function(res){
+          console.log(res);
+
+          $location.path('/animals');
+        })
+        .catch(console.log);
+
+        $scope.animal = {};
+      }
+    }])
+    .config(['$routeProvider', function($routeProvider){
+      console.log($routeProvider);
+
+      $routeProvider.when('/animals', {
+        templateUrl: '/partials/animals/_index.html'
+      })
+      .when('/animals/new', {
+        templateUrl: '/partials/animals/_new.html',
+        controller: 'animalController'
+      })
+      .when('/animals/:id', {
+        templateUrl: '/partials/animals/_show.html',
+        controller: 'animalController'
+      })
+      .otherwise('/animals');
+    }])
+  </script>
+</head>
+<body>
+  <div ng-hide='true'>
+    <p>Can you see me?</p>
+  </div>
+  <a ng-href='#!/animals'>Animals!</a>
+  <a ng-href='#!/animals/new'>Create Animals!</a>
+  <ng-view></ng-view>
+</body>
+</html>
