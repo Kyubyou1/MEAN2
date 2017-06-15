@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='app'>
 <head>
   <meta charset="UTF-8">
   <title>NinjaDashboard</title>
+  <script src='angular/angular.js'></script>
+  <script src='angular-route/angular-route.js'></script>
+  <script src="app.js" charset="utf-8"></script>
+  <script src="controllers/ninjaController.js" charset="utf-8"></script>
+  <script src="factories/ninjaFactory.js" charset="utf-8"></script>
 </head>
 <body>
+  <div ng-hide='true'>can see?</div>
+  <ng-view></ng-view>
 
+  Hello
 </body>
 </html>

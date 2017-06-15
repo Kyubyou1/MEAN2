@@ -10,6 +10,7 @@ app.use(express.static(path.resolve('bower_components')));
 app.use(express.static(path.resolve('public')));
 
 require(path.resolve('server', 'config', 'database'));
+require(path.resolve('server', 'config', 'routes'))(app);
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
