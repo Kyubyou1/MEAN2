@@ -1,11 +1,11 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8800;
 const app = express();
 
-app.use(parser.urlencoded({extended:true}));
 app.use(parser.json());
+app.use(parser.urlencoded({extended:true}));
 app.use(express.static(path.resolve('bower_components')));
 app.use(express.static(path.resolve('public')));
 

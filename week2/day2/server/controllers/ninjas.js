@@ -11,7 +11,21 @@ module.exports = {
     })
   },
   show(request, response) {},
-  create(request, response) {},
+  create(request, response) {
+    console.log('creating ninja controller')
+    Ninja.create(request.body)
+    .then(function(newNinja){
+
+      console.log('ninja')
+      response.json(newNinja);
+    })
+    .catch(errorHandler.bind(response));
+  },
   delete(request, response) {},
   update(request, response) {}
 };
+
+function errorHandler(error){
+  console.log(error);
+  this.status(422).json(error.message);
+}

@@ -15,6 +15,16 @@ angular.module('app')
       .catch(console.log);
     };
 
+    factory.createNinja = function(newNinja, callback){
+      console.log('inside factory creating ninja')
+      $http.post('/ninjas', newNinja)
+      .then(function(response){
+        console.log(`got ninja?`);
+        factory.ninjas.push(response.data);
+        callback(response.data);
+      })
+      .catch(console.log);
+    }
 
     return factory;
   }])

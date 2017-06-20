@@ -7,6 +7,10 @@ angular.module('app', ['ngRoute'])
       templateUrl: 'partials/ninjas/_index.html',
       controller: 'ninjaController'
     })
+    .when('/ninjas/new', {
+      templateUrl: 'partials/ninjas/_new.html',
+      controller: 'ninjaController'
+    })
 
     .otherwise('/ninjas')
   }])
