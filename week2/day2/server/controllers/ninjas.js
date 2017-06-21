@@ -5,7 +5,7 @@ module.exports = {
   index: function(request, response) {
     Ninja.find({}, function(error, ninjas){
       if(error){
-        return console.log(error);
+        return errorHandler.call(response, error);
       }
       response.json(ninjas);
     })
@@ -21,7 +21,14 @@ module.exports = {
     })
     .catch(errorHandler.bind(response));
   },
-  delete(request, response) {},
+  delete(request, response) {
+    Ninja.findByIdAndRemove(request.params.id)
+    .then(function(sacrificed){
+      console.log(`${sacrificed.name} has been sacrificed`)
+      response.json(true);
+    })
+    .catch(errorHandler.bind(response));
+  },
   update(request, response) {}
 };
 

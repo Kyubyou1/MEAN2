@@ -26,5 +26,26 @@ angular.module('app')
       .catch(console.log);
     }
 
+    factory.deleteNinja = function(id, callback){
+      $http.delete('/ninjas/' + id)
+      .then(function(response){
+        const sacrifice = factory.ninjas.find(ninja => ninja._id === id);
+        if (sacrifice){
+          factory.ninjas.splice(factory.ninjas.indexOf(sacrifice), 1);
+        }
+        callback(null);
+      })
+      .catch(console.log);
+    }
+
+    factory.showNinja = function(id, callback){
+      const chosen = factory.ninjas.find(ninja => ninja._id === id);
+      if (chosen){
+        return callback(null, chosen);
+      }
+
+
+    }
+
     return factory;
-  }])
+  }]);

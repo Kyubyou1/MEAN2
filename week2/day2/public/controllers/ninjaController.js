@@ -17,6 +17,23 @@ angular.module('app')
             $location.path('/ninjas');
           });
         };
+
+        $scope.deleteNinja = function(id){
+          ninjaFactory.deleteNinja(id, function(error){
+            if (error) {
+              // display message
+            }
+          })
+        };
+
+        $scope.showNinja = function(){
+          ninjaFactory.showNinja($routeParams._id, function(error, ninja){
+            console.log('have ninja', ninja)
+            $scope.ninja = ninja;
+
+          })
+        }
+
       }
     ]
   );
