@@ -10,7 +10,14 @@ module.exports = {
       response.json(ninjas);
     })
   },
-  show(request, response) {},
+  show(request, response) {
+    console.log("Inside controller show");
+    Ninja.findById(request.params.id)
+    .then(function(ninja){
+      response.json(ninja);
+    })
+    .catch(errorHandler.bind(response));
+  },
   create(request, response) {
     console.log('creating ninja controller')
     Ninja.create(request.body)
@@ -29,7 +36,14 @@ module.exports = {
     })
     .catch(errorHandler.bind(response));
   },
-  update(request, response) {}
+  update(request, response) {
+    Ninja.findByIdAndUpdate(request.params.id, request.body, { new: true })
+    .then(function(ninja){
+      response.json(ninja);
+      console.log('ninja',ninja);
+    })
+    .catch(errorHandler.bind(response));
+  }
 };
 
 function errorHandler(error){

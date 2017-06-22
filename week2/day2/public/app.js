@@ -15,6 +15,10 @@ angular.module('app', ['ngRoute'])
       templateUrl: 'partials/ninjas/_show.html',
       controller: 'ninjaController'
     })
+    .when('/ninjas/:_id/edit', {
+      templateUrl: 'partials/ninjas/_edit.html',
+      controller: 'ninjaController'
+    })
 
     .otherwise('/ninjas')
   }])
