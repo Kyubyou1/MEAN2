@@ -1,0 +1,17 @@
+
+<div ng-controller='mainController'>
+  <form ng-submit='login()'>
+    <div><label for=""><input type="text" ng-model='user.username' placeholder='username'></label></div>
+    <div><label for=""><input type="password" ng-model='user.password' placeholder='password'></label></div>
+    <button>Submit</button>
+  </form>
+</div>
+
+<div ng-controller='mainController'>
+  <form ng-submit='register()'>
+    <div><label for=""><input type="text" ng-model='user.username' placeholder='username'></label></div>
+    <div><label for=""><input type="password" ng-model='user.password' placeholder='password'></label></div>
+    <div><label for=""><input type="password" ng-model='user.passwordConfirm' placeholder='password'></label></div>
+    <button>Submit</button>
+  </form>
+</div>

@@ -1,8 +1,11 @@
 console.log('hello')
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'ngCookies'])
   .config(['$routeProvider', function($routeProvider){
     $routeProvider
+    .when('/', {
+      templateUrl: 'partials/_index.html'
+    })
     .when('/ninjas', {
       templateUrl: 'partials/ninjas/_index.html',
       controller: 'ninjaController'
@@ -20,5 +23,5 @@ angular.module('app', ['ngRoute'])
       controller: 'ninjaController'
     })
 
-    .otherwise('/ninjas')
+    .otherwise('/');
   }])
