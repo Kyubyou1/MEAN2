@@ -23,5 +23,14 @@ angular.module('app', ['ngRoute', 'ngCookies'])
       controller: 'ninjaController'
     })
 
+    .when('/belts', {
+      templateUrl: 'partials/belts/_index.html',
+      controller: 'beltController'
+    })
+    .when('/belts/new', {
+      templateUrl: 'partials/belts/_new.html',
+      controller: 'beltController'
+    })
+
     .otherwise('/');
   }])

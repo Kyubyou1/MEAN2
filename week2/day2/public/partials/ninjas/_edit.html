@@ -1,7 +1,9 @@
 <form action="" ng-init=showNinja() ng-submit="updateNinja(ninja)">
   <label for=""><input type="text" placeholder="Name" ng-model="ninja.name"></label>
   <label for=""><input type="text" placeholder="Height" ng-model="ninja.height"></label>
-  <label for=""><input type="text" placeholder="Belt" ng-model="ninja.belt"></label>
+  <label for="">
+    <select ng-options='belt as belt.color for belt in belts' ng-model='ninja.belt'></select>
+  </label>
   <label for=""><input type="text" placeholder="Weapon" ng-model="ninja.weapons"></label>
   <button>Retrain Ninja</button>
 </form>

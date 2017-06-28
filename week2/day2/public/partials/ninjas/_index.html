@@ -1,4 +1,5 @@
 <a href="#!/ninjas/new">Train new ninja</a>
+<a href="#!/belts"><button>Belts</button></a>
 <table ng-init='getNinjas()'>
   <thead>
     <th>Name</th>
@@ -8,7 +9,7 @@
   <tbody>
     <tr ng-repeat='ninja in ninjas'>
       <td><a href="#!/ninjas/{{ninja._id}}">{{ninja.name}}</a></td>
-      <td>{{ninja.belt}}</td>
+      <td>{{ninja.belt.color}}</td>
       <td>
         <button ng-click="deleteNinja(ninja._id)">sacrifice</button>
         <a href="#!/ninjas/{{ninja._id}}/edit"><button>update</button></a>

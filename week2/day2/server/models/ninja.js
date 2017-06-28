@@ -14,8 +14,8 @@ const ninja = new Schema({
     default: 5
   },
   'belt': {
-    type: String,
-    trim: true
+    type: Schema.Types.ObjectId,
+    ref: 'Belt'
   },
   'weapons': [{
     type: String

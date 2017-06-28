@@ -1,8 +1,8 @@
 console.log('controller')
 angular.module('app')
   .controller('ninjaController',
-    ['$scope', '$routeParams', 'ninjaFactory', '$location',
-      function($scope, $routeParams, ninjaFactory, $location){
+    ['$scope', '$routeParams', 'ninjaFactory', '$location', 'beltFactory',
+      function($scope, $routeParams, ninjaFactory, $location, bf){
         console.log('controllers init');
         $scope.getNinjas = function(){
           ninjaFactory.getNinjas(function(ninjas){
@@ -30,8 +30,10 @@ angular.module('app')
           ninjaFactory.showNinja($routeParams._id, function(error, ninja){
             console.log('have ninja', ninja)
             $scope.ninja = angular.copy(ninja);
+            $scope.getBelts();
+          });
 
-          })
+
         }
         $scope.updateNinja = function(){
           ninjaFactory.updateNinja($scope.ninja, function(error, ninja){
@@ -40,7 +42,13 @@ angular.module('app')
             }
             console.log('have ninja', ninja)
             $location.path('/ninjas/'+ ninja._id);
-          })
+          });
+        };
+
+        $scope.getBelts = function() {
+          bf.getBelts(function(belts) {
+            $scope.belts = belts;
+          });
         }
       }
     ]

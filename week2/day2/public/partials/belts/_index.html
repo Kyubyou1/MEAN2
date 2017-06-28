@@ -1,0 +1,24 @@
+<main ng-init='getBelts()'>
+  <h1>Belts!</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Color</th>
+        <th>Level</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='belt in belts'>
+        <td>{{belt.color}}</td>
+        <td>{{belt.level}}</td>
+        <td>
+          Actions
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="#!/belts/new"><button>New Belt</button></a>
+</main>

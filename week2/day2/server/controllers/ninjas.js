@@ -3,12 +3,14 @@ const Ninja = require('mongoose').model('Ninja');
 
 module.exports = {
   index: function(request, response) {
-    Ninja.find({}, function(error, ninjas){
-      if(error){
-        return errorHandler.call(response, error);
-      }
+    Ninja.find({}).populate('belt')
+    .then(function(ninjas){
+      console.log(ninjas);
       response.json(ninjas);
     })
+    .catch(function(error) {
+
+    });
   },
   show(request, response) {
     console.log("Inside controller show");

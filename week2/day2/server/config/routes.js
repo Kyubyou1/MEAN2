@@ -1,5 +1,6 @@
 const ninjaController = require('../controllers/ninjas');
 const authController  = require('../controllers/auth');
+const beltController  = require('../controllers/belts');
 
 
 module.exports = function(app) {
@@ -12,5 +13,9 @@ module.exports = function(app) {
 
     .post('/auth/login', authController.login)
     .post('/auth/register', authController.register)
-    .delete('/auth/logout', authController.logout);
+    .delete('/auth/logout', authController.logout)
+
+    .get('/belts', beltController.index)
+    .post('/belts', beltController.create)
+    .get('/belts/:id', beltController.show);
 };
