@@ -6,7 +6,7 @@ const ninja = new Schema({
   'name': {
     type: String,
     required: true,
-    minlength: 3,
+    minlength: [3, 'Name must be longer than 3 characters'],
     trim: true
   },
   'height': {

@@ -1,0 +1,9 @@
+<nav ng-controller='NavController'>
+  <a href="#!/">Home</a>
+  <a href="#!/ninjas">Ninjas</a>
+  <a href="#!/belts">Belts</a>
+
+  <div ng-if='isAuthed'>
+    <button ng-click='logout()'>Logout</button>
+  </div>
+</nav>

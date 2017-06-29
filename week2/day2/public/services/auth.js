@@ -13,6 +13,7 @@ angular.module('app')
     };
 
     this.logout = function() {
+      console.log('in auth service')
       return $http.delete('/auth/logout');
     };
   }]);

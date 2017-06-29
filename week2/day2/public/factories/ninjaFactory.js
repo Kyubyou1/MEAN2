@@ -21,18 +21,23 @@ angular.module('app')
       .then(function(response){
         console.log(`got ninja?`);
         factory.ninjas.push(response.data);
-        callback(response.data);
+        callback(null, response.data);
       })
-      .catch(console.log);
+      .catch(function(errorResponse) {
+        console.log(errorResponse);
+
+        callback(errorResponse.data);
+      });
     }
 
-    factory.deleteNinja = function(id, callback){
+    factory.deleteNinja = function(id, callbackForErrors){
       $http.delete('/ninjas/' + id)
       .then(function(response){
         removeNinjaById(id);
-        callback(null);
       })
-      .catch(console.log);
+      .catch(function(errorResponse) {
+        callbackForErrors(errorResponse.data);
+      });
     }
 
     factory.showNinja = function(id, callback){
@@ -47,6 +52,9 @@ angular.module('app')
         factory.ninjas.push(response.data);
         callback(null, response.data);
       })
+      .catch(function(errorResponse) {
+        callback(errorResponse.data);
+      });
     }
 
     function getNinjaById(id) {
@@ -63,15 +71,18 @@ angular.module('app')
       return ninja;
     }
 
-    factory.updateNinja = function(ninja, callback){
+    factory.updateNinja = function(ninja, callback, errorCallback){
       console.log("inside updateNinja");
       $http.put('/ninjas/' + ninja._id, ninja)
       .then(function(response){
         console.log('factory.ninjas',factory.ninjas);
         removeNinjaById(ninja._id, response.data);
 
-        callback(null, response.data);
+        callback(response.data);
       })
+      .catch(function(errorResponse) {
+        errorCallback(errorResponse.data);
+      });
 
     }
     return factory;

@@ -1,4 +1,10 @@
 <section ng-init='getBelts()'>
+  <div ng-if='errors'>
+    <ul>
+      <li ng-repeat='error in errors'>{{ error }}</li>
+    </ul>
+  </div>
+
   <form action="" ng-submit="createNinja(ninja)">
     <label for=""><input type="text" placeholder="Name" ng-model="ninja.name"></label>
     <label for=""><input type="text" placeholder="Height" ng-model="ninja.height"></label>

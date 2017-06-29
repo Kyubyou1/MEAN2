@@ -22,7 +22,14 @@ module.exports = {
       })
       .catch(console.log);
   },
-  logout(request, response) {}
+  logout(request, response) {
+    console.log('made it to logout');
+
+    request.session.destroy();
+    response.clearCookie('userID');
+    response.clearCookie('expiration');
+    response.json(true);
+  }
 };
 
 function login(request, response, user) {

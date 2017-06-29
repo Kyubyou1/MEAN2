@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const beltSchema = new Schema({
   color: {
     type: String,
-    require: true,
+    required: true,
     unique: true
   },
   level: {

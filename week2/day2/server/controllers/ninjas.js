@@ -8,9 +8,7 @@ module.exports = {
       console.log(ninjas);
       response.json(ninjas);
     })
-    .catch(function(error) {
-
-    });
+    .catch(errorHandler.bind(response));
   },
   show(request, response) {
     console.log("Inside controller show");
@@ -49,6 +47,24 @@ module.exports = {
 };
 
 function errorHandler(error){
-  console.log(error);
-  this.status(422).json(error.message);
+  let errors = [];
+
+  if (error.errors) {
+    // console.log(error.errors.name.message);
+    // for (const [field, errorObject] of Object.entries(error.errors)) {
+    //   // console.log(item[1].message);
+    //
+    //   errors.push(errorObject.message);
+    // }
+
+    errors = Object.keys(error.errors).map(key => error.errors[key].message);
+  } else if (typeof error === 'string') {
+    errors.push(error);
+  } else {
+    errors.push(error.message);
+  }
+
+  console.log(errors);
+
+  this.status(422).json(errors);
 }
