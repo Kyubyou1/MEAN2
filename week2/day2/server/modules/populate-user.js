@@ -5,9 +5,8 @@ module.exports = function(request, response, next) {
     User.findById(request.session.user._id)
       .then(function(user) {
         request.user = user;
-      }
-      next();
-      )
+        next();
+      })
       .catch(next);
   } else {
     next();
